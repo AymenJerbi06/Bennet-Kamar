@@ -1,0 +1,200 @@
+{
+  "title": "ValleyBakery",
+  "h1s": [],
+  "h2s": [
+    "Our Story",
+    "Hours",
+    "“Their commitment to customer service, business excellence and Burnaby as a whole, has been remarkable, and clearly the key to their success as a local favourite in this community.”",
+    "Contact Form"
+  ],
+  "h3s": [
+    "Valley Bakery, a locally-sourced Burnaby bakery since 1957, has been a beloved part of the Lower Mainland for over six decades. Our customers know us for our dedication to crafting delicious European-style baked goods, including exquisite wedding cakes, delightful buttercream treats, artisanal breads, and savoury meat pies."
+  ],
+  "paragraphs": [
+    "MondayOpen                                  9:00 am - 7:00 pm",
+    "TuesdayOpen                                  9:00 am - 7:00 pm",
+    "WednesdayOpen                                  9:00 am - 7:00 pm",
+    "ThursdayOpen                                  9:00 am - 7:00 pm",
+    "FridayOpen                                  9:00 am - 7:00 pm",
+    "SaturdayOpen                                  9:00 am - 7:00 pm",
+    "SundayOpen                                  10:00 am - 6:00 pm",
+    "— CEO of Burnaby board or Trade"
+  ],
+  "buttons": [
+    "0",
+    "Skip to Content",
+    "ValleyBakery",
+    "Home",
+    "Products",
+    "Breads & Buns",
+    "Pastries",
+    "Cookies",
+    "Cakes",
+    "Wedding Cake Gallery",
+    "Our Story",
+    "Contact",
+    "Call",
+    "Open Menu\n    Close Menu",
+    "ValleyBakery",
+    "Home",
+    "Products",
+    "Breads & Buns",
+    "Pastries",
+    "Cookies",
+    "Cakes",
+    "Wedding Cake Gallery",
+    "Our Story",
+    "Contact",
+    "Call",
+    "Open Menu\n    Close Menu",
+    "Home",
+    "Folder:\n                Products",
+    "Wedding Cake Gallery",
+    "Our Story"
+  ],
+  "imgs": [
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/796dc65d-1669-41fd-aede-9cf1c3e7b803/ales-krivec-QnNqGoCnBg0-unsplash-min.jpg",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/99073550-76c8-4c43-bcb3-c9b97952fa32/web+logo+.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/3d19f141-ab82-4017-ab60-6dce92443bb7/cake+sec+.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/5065192e-81ec-47ed-bba6-d709a5999ed4/bread+sec+.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/88798ba1-1833-40c4-b76f-52a481a8cfbc/pastries+sec+.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/9d69767f-f9a6-430d-bcdf-5f95d96ac24f/cookie+sec+.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/67415a6f-8f10-47cf-bb55-465e29ff7b90/Google-Maps-Logo-2+copy.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/c3aa10b0-68d5-49ab-98db-42c2a4ca0241/Picture+147.jpg",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/15d9273c-d0f6-4511-aad1-f7bbabccd96a/five-stars-quality-rating-icons-5-stars-icon-five-star-sign-rating-symbol-vector-illustration_561158-930.jpg+copy.png",
+      "alt": ""
+    },
+    {
+      "src": "https://images.squarespace-cdn.com/content/v1/64f3a78eb30f7051bfad591c/85abbdb8-3b1b-4d69-a87e-d8d38eb5895c/pablo-lancaster-jones-eydiKD88C8w-unsplash.jpg",
+      "alt": ""
+    }
+  ],
+  "sections": [
+    {
+      "tag": "ARTICLE",
+      "id": "sections",
+      "className": "sections",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 4973
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "className": "page-section has-section-divider\n    \n      full-bleed-section\n      layout-engi",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-border",
+      "bgColor": "rgb(0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-background",
+      "bgColor": "rgb(0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-background-content",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-background-canvas background-fx-canvas",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-background-overlay",
+      "bgColor": "rgb(0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-divider-display",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 626
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-divider-block",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 29
+    },
+    {
+      "tag": "svg",
+      "id": "",
+      "className": "",
+      "bgColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "path",
+      "id": "",
+      "className": "",
+      "bgColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "svg",
+      "id": "",
+      "className": "",
+      "bgColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "path",
+      "id": "",
+      "className": "",
+      "bgColor": "rgba(0, 0, 0, 0)"
+    },
+    {
+      "tag": "SECTION",
+      "id": "",
+      "className": "page-section has-section-divider\n    \n      full-bleed-section\n      layout-engi",
+      "bgColor": "rgba(0, 0, 0, 0)",
+      "height": 520
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "className": "section-border",
+      "bgColor": "rgba(175, 138, 93, 0.75)",
+      "height": 549
+    }
+  ]
+}

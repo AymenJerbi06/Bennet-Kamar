@@ -2,27 +2,30 @@
 
 import { FormEvent, useState } from 'react';
 import { MessageCircle } from 'lucide-react';
+import { useLanguage } from './LanguageProvider';
 
 type FormState = {
-  inquiry: string;
+  inquiry: InquiryKey;
   name: string;
   email: string;
   phone: string;
   message: string;
 };
 
-const inquiryOptions = ['Collaboration', 'Product question', 'Order issue', 'Other inquiry'];
+type InquiryKey = 'collaboration' | 'productQuestion' | 'orderIssue' | 'other';
+const inquiryOptions: InquiryKey[] = ['collaboration', 'productQuestion', 'orderIssue', 'other'];
 
 export default function OrderSection() {
+  const { copy } = useLanguage();
   const [form, setForm] = useState<FormState>({
-    inquiry: 'Product question',
+    inquiry: 'productQuestion',
     name: '',
     email: '',
     phone: '',
     message: '',
   });
 
-  const update = (key: keyof FormState, value: string) => {
+  const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm(prev => ({ ...prev, [key]: value }));
   };
 
@@ -30,12 +33,12 @@ export default function OrderSection() {
     event.preventDefault();
 
     const message = [
-      'New Bennet Kamar inquiry',
+      copy.contact.inquiryTitle,
       '',
-      `Type: ${form.inquiry}`,
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      `Phone: ${form.phone || 'Not provided'}`,
+      `${copy.contact.type}: ${copy.contact[form.inquiry]}`,
+      `${copy.contact.name}: ${form.name}`,
+      `${copy.contact.email}: ${form.email}`,
+      `${copy.contact.phone}: ${form.phone || copy.contact.fallbackPhone}`,
       '',
       'Message:',
       form.message,
@@ -52,29 +55,29 @@ export default function OrderSection() {
 
       <section id="contact" className="contact-section">
         <div className="narrow">
-          <h2 className="contact-title">Contact Us</h2>
+          <h2 className="contact-title">{copy.contact.title}</h2>
 
           <form className="contact-form" onSubmit={submit}>
             <div className="option-list">
               <div className="form-group-title">
-                What can we help with? <span>(required)</span>
+                {copy.contact.prompt} <span>{copy.contact.required}</span>
               </div>
 
-              {inquiryOptions.map(label => (
-                <label key={label} className="check-row">
+              {inquiryOptions.map(option => (
+                <label key={option} className="check-row">
                   <input
                     type="radio"
                     name="inquiry"
-                    checked={form.inquiry === label}
-                    onChange={() => update('inquiry', label)}
+                    checked={form.inquiry === option}
+                    onChange={() => update('inquiry', option)}
                   />
-                  {label}
+                  {copy.contact[option]}
                 </label>
               ))}
             </div>
 
             <label className="field">
-              <span className="field-label">Name <em>(required)</em></span>
+              <span className="field-label">{copy.contact.name} <em>{copy.contact.required}</em></span>
               <input
                 value={form.name}
                 onChange={event => update('name', event.target.value)}
@@ -83,7 +86,7 @@ export default function OrderSection() {
             </label>
 
             <label className="field">
-              <span className="field-label">Email <em>(required)</em></span>
+              <span className="field-label">{copy.contact.email} <em>{copy.contact.required}</em></span>
               <input
                 type="email"
                 value={form.email}
@@ -93,7 +96,7 @@ export default function OrderSection() {
             </label>
 
             <label className="field">
-              <span className="field-label">Phone</span>
+              <span className="field-label">{copy.contact.phone}</span>
               <input
                 type="tel"
                 value={form.phone}
@@ -102,7 +105,7 @@ export default function OrderSection() {
             </label>
 
             <label className="field">
-              <span className="field-label">Message <em>(required)</em></span>
+              <span className="field-label">{copy.contact.message} <em>{copy.contact.required}</em></span>
               <textarea
                 value={form.message}
                 onChange={event => update('message', event.target.value)}
@@ -113,7 +116,7 @@ export default function OrderSection() {
             <div className="form-actions">
               <button type="submit" className="black-btn checkout-submit">
                 <MessageCircle size={20} />
-                Send Message
+                {copy.contact.send}
               </button>
             </div>
           </form>

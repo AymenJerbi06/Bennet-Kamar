@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Amiri, Cormorant_Garamond, DM_Sans } from 'next/font/google';
 import CartDrawer from '@/components/CartDrawer';
+import { LanguageProvider } from '@/components/LanguageProvider';
 import SiteFooter from '@/components/SiteFooter';
 import SiteNav from '@/components/SiteNav';
 import { StoreProvider } from '@/components/StoreProvider';
@@ -38,12 +39,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${cormorant.variable} ${dm.variable} ${amiri.variable}`}>
       <body>
-        <StoreProvider>
-          <SiteNav />
-          <CartDrawer />
-          {children}
-          <SiteFooter />
-        </StoreProvider>
+        <LanguageProvider>
+          <StoreProvider>
+            <SiteNav />
+            <CartDrawer />
+            {children}
+            <SiteFooter />
+          </StoreProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

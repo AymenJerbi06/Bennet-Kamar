@@ -2,31 +2,65 @@
 
 import Image from 'next/image';
 import { useEffect, useState, type KeyboardEvent } from 'react';
-import { Check, ChevronLeft, ChevronRight, Images, ShoppingBag, Tag, X } from 'lucide-react';
-import {
-  bundleToProduct,
-  bundles,
-  formatPrice,
-  products,
-  type Bundle,
-  type Product,
-} from '@/lib/products';
+import { Check, ChevronLeft, ChevronRight, Gift, ShoppingBag, Star, Timer, Truck, X } from 'lucide-react';
+import type { TranslationSet } from '@/lib/i18n';
+import { bundleToProduct, bundles, formatPrice, products, type Product } from '@/lib/products';
+import { useLanguage } from './LanguageProvider';
 import { useStore } from './StoreProvider';
 
-type Filter = 'all' | Product['category'];
+type Filter = 'all' | Product['category'] | 'bundle' | 'hot' | 'favorite';
+type ReviewStats = Record<string, { average: number; count: number }>;
+type EngagementOffer = {
+  kind: 'free-delivery' | 'hazelnut-pair';
+  title: string;
+  description: string;
+  expiresAt: number;
+};
+type InterestEvent = {
+  productId: string;
+  name: string;
+  at: number;
+};
 
-const filters: { value: Filter; label: string }[] = [
-  { value: 'all', label: 'All Products' },
-  { value: 'sweet', label: 'Sweet' },
-  { value: 'salty', label: 'Savory' },
-];
+const ACTIVE_OFFER_KEY = 'bennet-kamar-active-offer';
+const CHECKOUT_OFFER_KEY = 'bennet-kamar-checkout-offer';
+const INTEREST_KEY = 'bennet-kamar-product-interest';
+const OFFER_WINDOW = 10 * 60 * 1000;
+const INTEREST_WINDOW = 2 * 60 * 1000;
 
 export default function ShopSection() {
+  const { copy } = useLanguage();
   const [filter, setFilter] = useState<Filter>('all');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const visibleProducts = filter === 'all'
-    ? products
-    : products.filter(product => product.category === filter);
+  const [catalogProducts, setCatalogProducts] = useState<Product[]>(products);
+  const [catalogBundles, setCatalogBundles] = useState(bundles);
+  const [reviewStats, setReviewStats] = useState<ReviewStats>({});
+  const [engagementOffer, setEngagementOffer] = useState<EngagementOffer | null>(null);
+  const [offerClock, setOfferClock] = useState(() => Date.now());
+  const filters: { value: Filter; label: string }[] = [
+    { value: 'all', label: copy.shop.filters.all },
+    { value: 'sweet', label: copy.shop.filters.sweet },
+    { value: 'salty', label: copy.shop.filters.salty },
+    { value: 'bundle', label: copy.shop.filters.bundle },
+    { value: 'hot', label: copy.shop.filters.hot },
+    { value: 'favorite', label: copy.shop.filters.favorite },
+  ];
+
+  const allProducts = [
+    ...catalogProducts.map(product => ({ ...product, kind: product.kind || 'product' as const })),
+    ...catalogBundles.map(bundleToProduct),
+  ].map(product => {
+    const stats = reviewStats[product.id];
+    return stats ? { ...product, ratingAverage: stats.average, ratingCount: stats.count } : product;
+  });
+
+  const visibleProducts = allProducts.filter(product => {
+    if (filter === 'all') return true;
+    if (filter === 'bundle') return product.kind === 'bundle';
+    if (filter === 'hot') return product.hotThisWeek;
+    if (filter === 'favorite') return product.customerFavorite;
+    return product.category === filter && product.kind !== 'bundle';
+  });
 
   useEffect(() => {
     if (!selectedProduct) return;
@@ -41,14 +75,75 @@ export default function ShopSection() {
     };
   }, [selectedProduct]);
 
+  useEffect(() => {
+    fetch('/api/catalog')
+      .then(response => response.json())
+      .then(data => {
+        if (Array.isArray(data.products)) setCatalogProducts(data.products);
+        if (Array.isArray(data.bundles)) setCatalogBundles(data.bundles);
+        if (data.reviewStats) setReviewStats(data.reviewStats);
+      })
+      .catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const onInspectProduct = (event: Event) => {
+      const productId = (event as CustomEvent<{ productId?: string }>).detail?.productId;
+      if (!productId) return;
+      const product = allProducts.find(item => item.id === productId);
+      if (product) openProduct(product);
+    };
+
+    window.addEventListener('bennet:inspect-product', onInspectProduct);
+    return () => window.removeEventListener('bennet:inspect-product', onInspectProduct);
+  }, [allProducts, engagementOffer, copy.shop]);
+
+  useEffect(() => {
+    try {
+      const raw = window.sessionStorage.getItem(ACTIVE_OFFER_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as EngagementOffer;
+      if (parsed.expiresAt > Date.now()) {
+        setEngagementOffer(parsed);
+      } else {
+        window.sessionStorage.removeItem(ACTIVE_OFFER_KEY);
+      }
+    } catch {
+      window.sessionStorage.removeItem(ACTIVE_OFFER_KEY);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!engagementOffer) return;
+    const timer = window.setInterval(() => {
+      const now = Date.now();
+      setOfferClock(now);
+      if (engagementOffer.expiresAt <= now) {
+        setEngagementOffer(null);
+        window.sessionStorage.removeItem(ACTIVE_OFFER_KEY);
+        window.sessionStorage.removeItem(CHECKOUT_OFFER_KEY);
+      }
+    }, 1000);
+    return () => window.clearInterval(timer);
+  }, [engagementOffer]);
+
+  const openProduct = (product: Product) => {
+    setSelectedProduct(product);
+    registerInterest(product, engagementOffer, setEngagementOffer, copy.shop);
+  };
+
+  const dismissOffer = () => {
+    setEngagementOffer(null);
+    window.sessionStorage.removeItem(ACTIVE_OFFER_KEY);
+  };
+
   return (
     <section id="products" className="shop-section">
       <div className="container">
         <div className="shop-header">
-          <h2 className="section-title">Products</h2>
+          <h2 className="section-title">{copy.shop.title}</h2>
           <p>
-            Choose your jars, inspect the details, add your favorites to the
-            cart, then finish with delivery and payment details.
+            {copy.shop.intro}
           </p>
 
           <div className="filter-row">
@@ -69,12 +164,10 @@ export default function ShopSection() {
             <ProductCard
               key={product.id}
               product={product}
-              onOpen={() => setSelectedProduct(product)}
+              onOpen={() => openProduct(product)}
             />
           ))}
         </div>
-
-        <BundleSection />
       </div>
 
       {selectedProduct && (
@@ -84,12 +177,135 @@ export default function ShopSection() {
         />
       )}
 
+      {engagementOffer && (
+        <EngagementOfferCard
+          offer={engagementOffer}
+          remainingMs={Math.max(0, engagementOffer.expiresAt - offerClock)}
+          products={allProducts}
+          onDismiss={dismissOffer}
+        />
+      )}
+
       <div className="slope bottom blue" />
     </section>
   );
 }
 
+function registerInterest(
+  product: Product,
+  existingOffer: EngagementOffer | null,
+  setOffer: (offer: EngagementOffer) => void,
+  copy: TranslationSet['shop'],
+) {
+  if (existingOffer) return;
+
+  const now = Date.now();
+  let recent: InterestEvent[] = [];
+
+  try {
+    const raw = window.sessionStorage.getItem(INTEREST_KEY);
+    recent = raw ? JSON.parse(raw) as InterestEvent[] : [];
+  } catch {
+    recent = [];
+  }
+
+  recent = recent.filter(event => now - event.at <= INTEREST_WINDOW);
+  recent.push({ productId: product.id, name: product.nameFr, at: now });
+  window.sessionStorage.setItem(INTEREST_KEY, JSON.stringify(recent));
+
+  const hazelnutViews = recent.filter(event => {
+    const normalized = `${event.productId} ${event.name}`.toLowerCase();
+    return normalized.includes('hazelnut') || normalized.includes('noisette');
+  }).length;
+
+  const nextOffer = hazelnutViews >= 2
+    ? {
+        kind: 'hazelnut-pair' as const,
+        title: copy.hazelnutTitle,
+        description: copy.hazelnutDescription,
+        expiresAt: now + OFFER_WINDOW,
+      }
+    : recent.length >= 3
+      ? {
+          kind: 'free-delivery' as const,
+          title: copy.deliveryTitle,
+          description: copy.deliveryDescription,
+          expiresAt: now + OFFER_WINDOW,
+        }
+      : null;
+
+  if (!nextOffer) return;
+
+  window.sessionStorage.setItem(ACTIVE_OFFER_KEY, JSON.stringify(nextOffer));
+  setOffer(nextOffer);
+}
+
+function EngagementOfferCard({
+  offer,
+  remainingMs,
+  products,
+  onDismiss,
+}: {
+  offer: EngagementOffer;
+  remainingMs: number;
+  products: Product[];
+  onDismiss: () => void;
+}) {
+  const { copy } = useLanguage();
+  const { addToCart } = useStore();
+  const [claimed, setClaimed] = useState(false);
+
+  const minutes = Math.floor(remainingMs / 60000);
+  const seconds = Math.floor((remainingMs % 60000) / 1000).toString().padStart(2, '0');
+
+  const claimOffer = () => {
+    if (offer.kind === 'hazelnut-pair') {
+      ['hazelnut-butter', 'zrir-hazelnut-almonds'].forEach(productId => {
+        const item = products.find(product => product.id === productId);
+        if (item) addToCart(item);
+      });
+    }
+
+    window.sessionStorage.setItem(CHECKOUT_OFFER_KEY, JSON.stringify({
+      code: 'FREEDELIVERY10',
+      expiresAt: offer.expiresAt,
+    }));
+    setClaimed(true);
+  };
+
+  return (
+    <aside className="engagement-offer" aria-live="polite">
+      <div className="engagement-offer-head">
+        <div>
+          <p className="engagement-offer-kicker">
+            {offer.kind === 'hazelnut-pair' ? <Gift size={14} /> : <Truck size={14} />}
+            {copy.shop.smartOffer}
+          </p>
+          <h3>{offer.title}</h3>
+        </div>
+        <button className="engagement-offer-close" onClick={onDismiss} aria-label="Dismiss offer">
+          <X size={18} />
+        </button>
+      </div>
+
+      <p>{offer.description}</p>
+
+      <div className="engagement-offer-meta">
+        <Timer size={16} />
+        <span>{minutes}:{seconds} {copy.shop.remaining}</span>
+      </div>
+
+      <div className="engagement-offer-actions">
+        <button type="button" className="black-btn" onClick={claimOffer}>
+          {claimed ? copy.shop.reserved : offer.kind === 'hazelnut-pair' ? copy.shop.addPairing : copy.shop.reserveOffer}
+        </button>
+      </div>
+    </aside>
+  );
+}
+
 function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void }) {
+  const { copy } = useLanguage();
   const { addToCart } = useStore();
   const [added, setAdded] = useState(false);
 
@@ -132,8 +348,20 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
         {product.tagline}. {product.ingredients.slice(0, 2).join(' and ')}.
       </p>
 
+      <div className="rating-line" aria-label={`${product.ratingAverage || 0} stars`}>
+        <Star size={15} fill="currentColor" />
+        <span>
+          {product.ratingCount ? `${product.ratingAverage} (${product.ratingCount})` : copy.shop.ratingsSoon}
+        </span>
+      </div>
+
       <div className="product-meta">
-        <span className="price">{formatPrice(product.price)}</span>
+        <span className="price">
+          {product.originalPrice && product.originalPrice > product.price && (
+            <del>{formatPrice(product.originalPrice)}</del>
+          )}
+          {formatPrice(product.price)}
+        </span>
         <button
           onClick={event => {
             event.stopPropagation();
@@ -144,14 +372,21 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: () => void
           aria-label={`Add ${product.nameFr} to cart`}
         >
           {added ? <Check size={18} /> : <ShoppingBag size={18} />}
-          {added ? 'Added' : 'Add'}
+          {added ? copy.shop.added : copy.shop.add}
         </button>
       </div>
     </article>
   );
 }
 
-function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
+function ProductModal({
+  product,
+  onClose,
+}: {
+  product: Product;
+  onClose: () => void;
+}) {
+  const { copy } = useLanguage();
   const { addToCart } = useStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const [added, setAdded] = useState(false);
@@ -245,6 +480,18 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
           <p className="modal-kicker">{product.categoryLabel}</p>
           <h3 id="product-modal-title">{product.nameFr}</h3>
           <p className="modal-ar">{product.nameAr}</p>
+
+          <div className="modal-rating static">
+            <div>
+              <Star size={17} fill="currentColor" />
+              <span>
+                {product.ratingCount
+                  ? `${product.ratingAverage} ${copy.shop.displayedRatings} ${product.ratingCount}`
+                  : copy.shop.ratingsNote}
+              </span>
+            </div>
+          </div>
+
           <p className="modal-desc">{product.description}</p>
 
           <ul className="modal-details">
@@ -261,94 +508,19 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
 
           <div className="modal-buy-row">
             <div>
+              {product.originalPrice && product.originalPrice > product.price && (
+                <del>{formatPrice(product.originalPrice)}</del>
+              )}
               <strong>{formatPrice(product.price)}</strong>
               {product.weight && <span>{product.weight}</span>}
             </div>
             <button onClick={addProduct} className="black-btn" disabled={!product.inStock}>
               {added ? <Check size={18} /> : <ShoppingBag size={18} />}
-              {added ? 'Added' : 'Add to cart'}
+              {added ? copy.shop.added : copy.shop.addToCart}
             </button>
           </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function BundleSection() {
-  return (
-    <div className="bundle-section">
-      <div className="bundle-heading">
-        <h3>Bundles</h3>
-        <p>Promoted packs with grouped products and a discounted price.</p>
-      </div>
-
-      <div className="bundle-grid">
-        {bundles.map(bundle => (
-          <BundleCard key={bundle.id} bundle={bundle} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BundleCard({ bundle }: { bundle: Bundle }) {
-  const { addToCart } = useStore();
-  const [added, setAdded] = useState(false);
-  const discount = Math.max(0, bundle.originalPrice - bundle.price);
-
-  const addBundle = () => {
-    addToCart(bundleToProduct(bundle));
-    setAdded(true);
-    window.setTimeout(() => setAdded(false), 1400);
-  };
-
-  return (
-    <article className={`bundle-card ${bundle.featured ? 'featured' : ''}`}>
-      <div className="bundle-media">
-        {bundle.video ? (
-          <video src={bundle.video} autoPlay muted loop playsInline />
-        ) : (
-          <Image
-            src={bundle.image}
-            alt={bundle.name}
-            fill
-            sizes="(max-width: 760px) 90vw, (max-width: 1180px) 44vw, 28vw"
-            style={{ objectFit: 'cover' }}
-          />
-        )}
-      </div>
-
-      <div className="bundle-copy">
-        <div className="bundle-title-row">
-          <div>
-            <h4>{bundle.name}</h4>
-            <p className="product-ar">{bundle.nameAr}</p>
-          </div>
-          <span className="bundle-discount">
-            <Tag size={15} />
-            Save {formatPrice(discount)}
-          </span>
-        </div>
-
-        <p>{bundle.description}</p>
-
-        <div className="bundle-includes">
-          <Images size={16} />
-          {bundle.includes.join(' · ')}
-        </div>
-
-        <div className="bundle-actions">
-          <div className="bundle-price">
-            <span>{formatPrice(bundle.price)}</span>
-            <del>{formatPrice(bundle.originalPrice)}</del>
-          </div>
-          <button onClick={addBundle} className="black-btn">
-            {added ? <Check size={18} /> : <ShoppingBag size={18} />}
-            {added ? 'Added' : 'Add bundle'}
-          </button>
-        </div>
-      </div>
-    </article>
   );
 }

@@ -1,0 +1,996 @@
+{
+  "products": [
+    {
+      "id": "hazelnut-butter",
+      "slug": "beurre-noisette",
+      "nameAr": "زبدة البندق",
+      "nameFr": "Beurre de Noisette",
+      "category": "sweet",
+      "categoryLabel": "Beurres",
+      "tagline": "Onctueux · 100% naturel",
+      "description": "Fait maison avec des noisettes fraîchement torréfiées. Sans sucre ajouté, sans huile de palme, sans conservateurs.",
+      "details": [
+        "Best-seller de la maison",
+        "Texture lisse et généreuse",
+        "Parfait pour crêpes, tartines et desserts"
+      ],
+      "image": "/images/catalog/hazelnut-butter-1.jpg",
+      "hoverImage": "/images/catalog/hazelnut-butter-2.jpg",
+      "gallery": [
+        "/images/catalog/hazelnut-butter-1.jpg",
+        "/images/catalog/hazelnut-butter-2.jpg",
+        "/images/catalog/hazelnut-butter-3.jpg",
+        "/images/catalog/hazelnut-butter-4.jpg",
+        "/images/catalog/hazelnut-butter-5.jpg"
+      ],
+      "ingredients": [
+        "Noisettes grillées",
+        "Sans sucre ajouté",
+        "Sans huile de palme"
+      ],
+      "price": 25,
+      "weight": "250g",
+      "inStock": true,
+      "featured": true,
+      "hotThisWeek": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "pistachio-butter",
+      "slug": "beurre-pistache",
+      "nameAr": "زبدة الفستق",
+      "nameFr": "Beurre de Pistache",
+      "category": "sweet",
+      "categoryLabel": "Beurres",
+      "tagline": "Gourmand · Couleur naturelle",
+      "description": "Un beurre de pistache maison d'une douceur incomparable, à la belle couleur verte naturelle.",
+      "details": [
+        "Pistaches premium",
+        "Goût riche sans additifs",
+        "Délicieux sur pancakes, gâteaux et iced coffee"
+      ],
+      "image": "/images/catalog/pistachio-butter-1.jpg",
+      "hoverImage": "/images/catalog/pistachio-butter-2.jpg",
+      "gallery": [
+        "/images/catalog/pistachio-butter-1.jpg",
+        "/images/catalog/pistachio-butter-2.jpg",
+        "/images/catalog/pistachio-butter-3.jpg",
+        "/images/catalog/pistachio-butter-4.jpg"
+      ],
+      "ingredients": [
+        "Pistaches premium",
+        "Couleur naturelle",
+        "Zéro additif"
+      ],
+      "price": 35,
+      "weight": "250g",
+      "inStock": true,
+      "featured": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "cashew-butter",
+      "slug": "beurre-cajou",
+      "nameAr": "زبدة الكاجو",
+      "nameFr": "Beurre de Cajou",
+      "category": "sweet",
+      "categoryLabel": "Beurres",
+      "tagline": "Crémeux · Délicat",
+      "description": "Le plus crémeux de nos beurres, avec une douceur subtile et une texture veloutée.",
+      "details": [
+        "Texture douce et très lisse",
+        "Naturellement sucré",
+        "Idéal pour smoothies et pâtisseries"
+      ],
+      "image": "/images/catalog/cashew-butter-1.jpg",
+      "hoverImage": "/images/catalog/cashew-butter-2.jpg",
+      "gallery": [
+        "/images/catalog/cashew-butter-1.jpg",
+        "/images/catalog/cashew-butter-2.jpg",
+        "/images/catalog/cashew-butter-3.jpg"
+      ],
+      "ingredients": [
+        "Noix de cajou",
+        "Texture veloutée",
+        "Naturellement sucré"
+      ],
+      "price": 30,
+      "weight": "250g",
+      "inStock": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "healthy-nutella",
+      "slug": "nutella-naturel",
+      "nameAr": "نوتيلا صحية",
+      "nameFr": "Nutella Naturel",
+      "category": "sweet",
+      "categoryLabel": "Pâtes à tartiner",
+      "tagline": "Le vrai goût · Sans sucre raffiné",
+      "description": "Notre version maison du Nutella, chocolatée, noisettée, saine et délicieusement gourmande.",
+      "details": [
+        "Cacao pur et noisettes",
+        "Sans conservateurs",
+        "Un classique pour le petit-déjeuner"
+      ],
+      "image": "/images/catalog/healthy-nutella-1.jpg",
+      "hoverImage": "/images/catalog/healthy-nutella-2.jpg",
+      "gallery": [
+        "/images/catalog/healthy-nutella-1.jpg",
+        "/images/catalog/healthy-nutella-2.jpg"
+      ],
+      "ingredients": [
+        "Noisettes",
+        "Cacao pur",
+        "Sucre de coco"
+      ],
+      "price": 22,
+      "weight": "250g",
+      "inStock": true,
+      "featured": true,
+      "hotThisWeek": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "white-choco-spread",
+      "slug": "creme-choco-blanc",
+      "nameAr": "كريمة الشوكولاتة البيضاء",
+      "nameFr": "Crème Choco Blanc",
+      "category": "sweet",
+      "categoryLabel": "Pâtes à tartiner",
+      "tagline": "Gourmandise · Légèreté",
+      "description": "Une pâte à tartiner au chocolat blanc maison, douce et crémeuse comme un nuage.",
+      "details": [
+        "Saveur douce et lactée",
+        "Préparée en petites quantités",
+        "Parfaite pour crêpes, gaufres et tartines"
+      ],
+      "image": "/images/catalog/white-choco-spread-1.jpg",
+      "hoverImage": "/images/catalog/white-choco-spread-2.jpg",
+      "gallery": [
+        "/images/catalog/white-choco-spread-1.jpg",
+        "/images/catalog/white-choco-spread-2.jpg",
+        "/images/catalog/white-choco-spread-3.jpg"
+      ],
+      "ingredients": [
+        "Chocolat blanc",
+        "Noisettes",
+        "Sans conservateurs"
+      ],
+      "price": 24,
+      "weight": "250g",
+      "inStock": true,
+      "hotThisWeek": true
+    },
+    {
+      "id": "apricot-jam",
+      "slug": "confiture-abricot",
+      "nameAr": "مربى المشمش",
+      "nameFr": "Confiture d'Abricot",
+      "category": "sweet",
+      "categoryLabel": "Confitures",
+      "tagline": "Fraîche · Parfumée",
+      "description": "Confiture artisanale préparée avec des abricots frais de saison, peu sucrée et pleine de saveur.",
+      "details": [
+        "Fruits de saison",
+        "Goût lumineux et parfumé",
+        "Très bonne avec pain, yaourt ou gâteaux"
+      ],
+      "image": "/images/catalog/apricot-jam-1.jpg",
+      "hoverImage": "/images/catalog/apricot-jam-2.jpg",
+      "gallery": [
+        "/images/catalog/apricot-jam-1.jpg",
+        "/images/catalog/apricot-jam-2.jpg",
+        "/images/catalog/apricot-jam-3.jpg"
+      ],
+      "ingredients": [
+        "Abricots frais",
+        "Peu sucrée",
+        "Sans pectine ajoutée"
+      ],
+      "price": 18,
+      "weight": "300g",
+      "inStock": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "strawberry-jam",
+      "slug": "confiture-fraise",
+      "nameAr": "مربى الفريز",
+      "nameFr": "Confiture de Fraise",
+      "category": "sweet",
+      "categoryLabel": "Confitures",
+      "tagline": "Rouge · Généreuse",
+      "description": "Une confiture de fraise maison généreuse, aux morceaux de fruits, au goût authentique.",
+      "details": [
+        "Avec morceaux de fruits",
+        "Recette artisanale",
+        "Classique, simple et réconfortant"
+      ],
+      "image": "/images/catalog/strawberry-jam-1.jpg",
+      "hoverImage": "/images/catalog/strawberry-jam-2.jpg",
+      "gallery": [
+        "/images/catalog/strawberry-jam-1.jpg",
+        "/images/catalog/strawberry-jam-2.jpg"
+      ],
+      "ingredients": [
+        "Fraises fraîches",
+        "Avec morceaux",
+        "Recette artisanale"
+      ],
+      "price": 18,
+      "weight": "300g",
+      "inStock": true
+    },
+    {
+      "id": "zrir-hazelnut-almonds",
+      "slug": "zrir-noisette-amandes",
+      "nameAr": "زرير بالبندق واللوز",
+      "nameFr": "Zrir Noisette & Amandes",
+      "category": "sweet",
+      "categoryLabel": "Zrir",
+      "tagline": "Traditionnel · Généreux",
+      "description": "Le zrir tunisien comme à la maison, avec noisettes, amandes, épices et toute l'âme d'une recette familiale.",
+      "details": [
+        "Préparé pour les fêtes et cadeaux",
+        "Riche en fruits secs",
+        "Goût traditionnel tunisien"
+      ],
+      "image": "/images/catalog/zrir-hazelnut-almonds-1.jpg",
+      "hoverImage": "/images/catalog/zrir-hazelnut-almonds-2.jpg",
+      "gallery": [
+        "/images/catalog/zrir-hazelnut-almonds-1.jpg",
+        "/images/catalog/zrir-hazelnut-almonds-2.jpg",
+        "/images/catalog/zrir-hazelnut-almonds-3.jpg"
+      ],
+      "ingredients": [
+        "Noisettes",
+        "Amandes",
+        "Épices tunisiennes"
+      ],
+      "price": 28,
+      "weight": "300g",
+      "inStock": true,
+      "featured": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "zrir-pistachio",
+      "slug": "zrir-pistache",
+      "nameAr": "زرير الفستق",
+      "nameFr": "Zrir à la Pistache",
+      "category": "sweet",
+      "categoryLabel": "Zrir",
+      "tagline": "Délicat · Festif",
+      "description": "Notre zrir signature à la pistache, une touche élégante pour les grandes occasions et le quotidien.",
+      "details": [
+        "Pistache généreuse",
+        "Parfait pour cadeaux",
+        "Texture riche et fondante"
+      ],
+      "image": "/images/catalog/zrir-pistachio-1.jpg",
+      "hoverImage": "/images/catalog/zrir-pistachio-2.jpg",
+      "gallery": [
+        "/images/catalog/zrir-pistachio-1.jpg",
+        "/images/catalog/zrir-pistachio-2.jpg"
+      ],
+      "ingredients": [
+        "Pistaches",
+        "Sésame grillé",
+        "Miel naturel"
+      ],
+      "price": 32,
+      "weight": "300g",
+      "inStock": true,
+      "hotThisWeek": true
+    },
+    {
+      "id": "granola",
+      "slug": "granola-maison",
+      "nameAr": "الغرنولا المنزلية",
+      "nameFr": "Granola Maison",
+      "category": "sweet",
+      "categoryLabel": "Petit-déjeuner",
+      "tagline": "Croustillant · Équilibré",
+      "description": "Granola fait maison, croustillant et doré, parfait pour un petit-déjeuner sain et savoureux.",
+      "details": [
+        "Céréales dorées et croustillantes",
+        "Avec fruits secs",
+        "Très bon avec yaourt, lait ou fruits"
+      ],
+      "image": "/images/catalog/granola-1.webp",
+      "gallery": [
+        "/images/catalog/granola-1.webp"
+      ],
+      "ingredients": [
+        "Flocons d'avoine",
+        "Miel",
+        "Fruits secs"
+      ],
+      "price": 20,
+      "weight": "350g",
+      "inStock": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "harissa",
+      "slug": "harissa-maison",
+      "nameAr": "الهريسة المنزلية",
+      "nameFr": "Harissa Maison",
+      "category": "salty",
+      "categoryLabel": "Salés",
+      "tagline": "Authentique · Parfumée",
+      "description": "La vraie harissa tunisienne, préparée à l'ancienne avec des piments rouges séchés et un mélange d'épices familial.",
+      "details": [
+        "Recette tunisienne maison",
+        "Piments rouges et épices",
+        "À servir avec sandwichs, pâtes, œufs ou grillades"
+      ],
+      "image": "/images/catalog/harissa-1.jpg",
+      "hoverImage": "/images/catalog/harissa-2.jpg",
+      "gallery": [
+        "/images/catalog/harissa-1.jpg",
+        "/images/catalog/harissa-2.jpg",
+        "/images/catalog/harissa-3.jpg",
+        "/images/catalog/harissa-4.jpg"
+      ],
+      "ingredients": [
+        "Piments rouges",
+        "Épices maison",
+        "Huile d'olive"
+      ],
+      "price": 15,
+      "weight": "200g",
+      "inStock": true,
+      "featured": true,
+      "hotThisWeek": true
+    },
+    {
+      "id": "chicken-meatballs",
+      "slug": "boulettes-poulet",
+      "nameAr": "كرات الدجاج بزيت الزيتون",
+      "nameFr": "Boulettes de Poulet",
+      "category": "salty",
+      "categoryLabel": "Salés",
+      "tagline": "Savoureux · Prêt à l'emploi",
+      "description": "Boulettes de poulet maison conservées dans l'huile d'olive extra vierge, prêtes à sublimer vos repas.",
+      "details": [
+        "Prêtes à servir",
+        "Conservées dans l'huile d'olive",
+        "Goût familial et généreux"
+      ],
+      "image": "/images/catalog/chicken-meatballs-1.jpg",
+      "hoverImage": "/images/catalog/chicken-meatballs-2.jpg",
+      "gallery": [
+        "/images/catalog/chicken-meatballs-1.jpg",
+        "/images/catalog/chicken-meatballs-2.jpg"
+      ],
+      "ingredients": [
+        "Poulet fermier",
+        "Huile d'olive",
+        "Épices artisanales"
+      ],
+      "price": 25,
+      "weight": "250g",
+      "inStock": true
+    }
+  ],
+  "bundles": [
+    {
+      "id": "ramadan-pack",
+      "name": "Pack Ramadan",
+      "nameAr": "باك رمضان",
+      "slug": "pack-ramadan",
+      "description": "A generous festive bundle built for family tables, gifting, and sharing.",
+      "includes": [
+        "Zrir Noisette & Amandes",
+        "Zrir à la Pistache",
+        "Confiture",
+        "Pâte à tartiner"
+      ],
+      "productIds": [
+        "zrir-hazelnut-almonds",
+        "zrir-pistachio",
+        "apricot-jam",
+        "healthy-nutella"
+      ],
+      "image": "/images/catalog/zrir-hazelnut-almonds-1.jpg",
+      "video": "/videos/bundles/pack-ramdhan.mp4",
+      "price": 95,
+      "originalPrice": 112,
+      "featured": true,
+      "hotThisWeek": true,
+      "customerFavorite": true
+    },
+    {
+      "id": "hazelnut-lovers",
+      "name": "Hazelnut Lovers",
+      "nameAr": "عشاق البندق",
+      "slug": "hazelnut-lovers",
+      "description": "All the hazelnut comfort: butter, Nutella naturel, and traditional zrir.",
+      "includes": [
+        "Beurre de Noisette",
+        "Nutella Naturel",
+        "Zrir Noisette & Amandes"
+      ],
+      "productIds": [
+        "hazelnut-butter",
+        "healthy-nutella",
+        "zrir-hazelnut-almonds"
+      ],
+      "image": "/images/catalog/hazelnut-butter-3.jpg",
+      "price": 68,
+      "originalPrice": 75,
+      "customerFavorite": true
+    },
+    {
+      "id": "pistachio-moments",
+      "name": "Pistachio Moments",
+      "nameAr": "لحظات الفستق",
+      "slug": "pistachio-moments",
+      "description": "A polished gift set for pistachio fans, with a soft white chocolate finish.",
+      "includes": [
+        "Beurre de Pistache",
+        "Zrir à la Pistache",
+        "Crème Choco Blanc"
+      ],
+      "productIds": [
+        "pistachio-butter",
+        "zrir-pistachio",
+        "white-choco-spread"
+      ],
+      "image": "/images/catalog/pistachio-butter-3.jpg",
+      "price": 84,
+      "originalPrice": 91,
+      "hotThisWeek": true
+    },
+    {
+      "id": "breakfast-table",
+      "name": "Breakfast Table",
+      "nameAr": "فطور الدار",
+      "slug": "breakfast-table",
+      "description": "A complete morning set: nut butter, two jams, and crunchy granola.",
+      "includes": [
+        "Beurre de Noisette",
+        "Confiture d'Abricot",
+        "Confiture de Fraise",
+        "Granola Maison"
+      ],
+      "productIds": [
+        "hazelnut-butter",
+        "apricot-jam",
+        "strawberry-jam",
+        "granola"
+      ],
+      "image": "/images/catalog/apricot-jam-2.jpg",
+      "price": 72,
+      "originalPrice": 81,
+      "customerFavorite": true
+    },
+    {
+      "id": "savory-duo",
+      "name": "Savory Duo",
+      "nameAr": "الثنائي المالح",
+      "slug": "savory-duo",
+      "description": "A quick savory table upgrade with homemade harissa and chicken meatballs.",
+      "includes": [
+        "Harissa Maison",
+        "Boulettes de Poulet"
+      ],
+      "productIds": [
+        "harissa",
+        "chicken-meatballs"
+      ],
+      "image": "/images/catalog/harissa-3.jpg",
+      "price": 36,
+      "originalPrice": 40
+    }
+  ],
+  "recipes": [
+    {
+      "id": "japanese-cake-bennet-kamar",
+      "slug": "japanese-cake-bennet-kamar",
+      "title": "Japanese Cake Bennet Kamar Edition",
+      "titleAr": "كيك ياباني بنة قمر",
+      "category": "sweet",
+      "relatedProduct": "Nutella Naturel",
+      "productsUsed": [
+        {
+          "productId": "healthy-nutella",
+          "quantity": 1
+        }
+      ],
+      "overview": "A soft cloud cake finished with a generous Bennet Kamar chocolate hazelnut layer.",
+      "image": "/api/recipe-image/japanese-cake-bennet-kamar",
+      "gallery": [
+        "/api/recipe-image/japanese-cake-bennet-kamar",
+        "/api/recipe-image/japanese-cake-bennet-kamar-2"
+      ],
+      "videoUrl": "/api/recipe-video/japanese-cake-bennet-kamar",
+      "time": "45 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Eggs",
+        "Milk",
+        "Flour",
+        "Nutella Naturel",
+        "A light cream topping"
+      ],
+      "steps": [
+        "Prepare a light sponge batter.",
+        "Bake until the cake is soft and airy.",
+        "Let it cool, then finish with Nutella Naturel."
+      ]
+    },
+    {
+      "id": "mini-pancakes-pistachio",
+      "slug": "mini-pancakes-pistachio",
+      "title": "Mini Pancakes with Pistachio Butter",
+      "titleAr": "ميني بانكيك بزبدة الفستق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Pistache",
+      "productsUsed": [
+        {
+          "productId": "pistachio-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "Quick mini pancakes with a creamy pistachio finish for breakfast or coffee time.",
+      "image": "/images/recipes/pancakes.jpg",
+      "gallery": [
+        "/images/recipes/pancakes.jpg"
+      ],
+      "videoUrl": "/api/recipe-video/mini-pancakes-pistachio",
+      "time": "20 min",
+      "difficulty": "Tres facile",
+      "ingredients": [
+        "Mini pancakes",
+        "Beurre de Pistache",
+        "Fresh fruit",
+        "Crushed nuts"
+      ],
+      "steps": [
+        "Cook small pancakes until golden.",
+        "Warm the pistachio butter slightly.",
+        "Top the pancakes and serve immediately."
+      ]
+    },
+    {
+      "id": "pistachio-iced-coffee",
+      "slug": "pistachio-iced-coffee",
+      "title": "Pistachio Iced Coffee",
+      "titleAr": "قهوة مثلجة بزبدة الفستق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Pistache",
+      "productsUsed": [
+        {
+          "productId": "pistachio-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "A cold coffee idea made richer with pistachio butter and a smooth milk base.",
+      "image": "/images/recipes/iced-coffee.jpg",
+      "gallery": [
+        "/images/recipes/iced-coffee.jpg",
+        "/api/recipe-image/pistachio-iced-coffee-2"
+      ],
+      "videoUrl": "/api/recipe-video/pistachio-iced-coffee",
+      "time": "10 min",
+      "difficulty": "Tres facile",
+      "ingredients": [
+        "Espresso",
+        "Cold milk",
+        "Beurre de Pistache",
+        "Ice cubes"
+      ],
+      "steps": [
+        "Mix pistachio butter with coffee until smooth.",
+        "Add cold milk and ice.",
+        "Shake or stir, then serve chilled."
+      ]
+    },
+    {
+      "id": "mini-donuts-hazelnut",
+      "slug": "mini-donuts-hazelnut",
+      "title": "Mini Donuts with Hazelnut Butter Filling",
+      "titleAr": "ميني دونات بزبدة البندق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Noisette",
+      "productsUsed": [
+        {
+          "productId": "hazelnut-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "Small homemade donuts filled with smooth hazelnut butter.",
+      "image": "/images/recipes/donuts.jpg",
+      "gallery": [
+        "/images/recipes/donuts.jpg"
+      ],
+      "videoUrl": "/api/recipe-video/mini-donuts-hazelnut",
+      "time": "30 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Mini donuts",
+        "Beurre de Noisette",
+        "Powdered sugar",
+        "Optional crushed hazelnuts"
+      ],
+      "steps": [
+        "Prepare or warm the mini donuts.",
+        "Fill each piece with hazelnut butter.",
+        "Dust lightly and serve."
+      ]
+    },
+    {
+      "id": "no-flour-natural-nutella-cake",
+      "slug": "no-flour-natural-nutella-cake",
+      "title": "No-Flour Cake with Natural Nutella",
+      "titleAr": "كيك بدون فرينة بالنوتيلا الطبيعية",
+      "category": "sweet",
+      "relatedProduct": "Nutella Naturel",
+      "productsUsed": [
+        {
+          "productId": "healthy-nutella",
+          "quantity": 1
+        }
+      ],
+      "overview": "A rich cake idea where Bennet Kamar Natural Nutella carries the chocolate flavor.",
+      "image": "/api/recipe-image/no-flour-natural-nutella-cake",
+      "gallery": [
+        "/api/recipe-image/no-flour-natural-nutella-cake"
+      ],
+      "videoUrl": "/api/recipe-video/no-flour-natural-nutella-cake",
+      "time": "35 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Eggs",
+        "Nutella Naturel",
+        "Cocoa",
+        "A pinch of salt"
+      ],
+      "steps": [
+        "Whisk the base until smooth.",
+        "Bake gently until set.",
+        "Cool before slicing for a clean texture."
+      ]
+    },
+    {
+      "id": "crepes-strawberry-jam",
+      "slug": "crepes-strawberry-jam",
+      "title": "Crepes with Strawberry Jam",
+      "titleAr": "كريب بمربى الفراولة",
+      "category": "sweet",
+      "relatedProduct": "Confiture de Fraise",
+      "productsUsed": [
+        {
+          "productId": "strawberry-jam",
+          "quantity": 1
+        }
+      ],
+      "overview": "Simple crepes folded with homemade strawberry jam and a soft fruit finish.",
+      "image": "/api/recipe-image/crepes-strawberry-jam",
+      "gallery": [
+        "/api/recipe-image/crepes-strawberry-jam"
+      ],
+      "videoUrl": "/api/recipe-video/crepes-strawberry-jam",
+      "time": "25 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Crepes",
+        "Confiture de Fraise",
+        "Fresh strawberries",
+        "Optional cream"
+      ],
+      "steps": [
+        "Prepare thin crepes.",
+        "Spread strawberry jam while the crepes are warm.",
+        "Fold and garnish before serving."
+      ]
+    },
+    {
+      "id": "panna-cotta-apricot",
+      "slug": "panna-cotta-apricot",
+      "title": "Panna Cotta with Apricot Jam",
+      "titleAr": "بانا كوتا بمربى المشمش",
+      "category": "sweet",
+      "relatedProduct": "Confiture d'Abricot",
+      "productsUsed": [
+        {
+          "productId": "apricot-jam",
+          "quantity": 1
+        }
+      ],
+      "overview": "A fresh dessert pairing creamy panna cotta with bright apricot jam.",
+      "image": "/api/recipe-image/panna-cotta-apricot",
+      "gallery": [
+        "/api/recipe-image/panna-cotta-apricot"
+      ],
+      "videoUrl": "/api/recipe-video/panna-cotta-apricot",
+      "time": "20 min + chill",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Cream",
+        "Milk",
+        "Vanilla",
+        "Confiture d'Abricot"
+      ],
+      "steps": [
+        "Prepare the panna cotta base.",
+        "Chill until set.",
+        "Top with apricot jam before serving."
+      ]
+    },
+    {
+      "id": "pesto-bennet-kamar",
+      "slug": "pesto-bennet-kamar",
+      "title": "Pesto Bennet Kamar Edition",
+      "titleAr": "بيستو بنة قمر",
+      "category": "salty",
+      "relatedProduct": "Harissa Maison",
+      "productsUsed": [
+        {
+          "productId": "harissa",
+          "quantity": 1
+        }
+      ],
+      "overview": "A savory recipe idea that brings Bennet Kamar flavor into pasta, toast, or sandwiches.",
+      "image": "/api/recipe-image/pesto-bennet-kamar",
+      "gallery": [
+        "/api/recipe-image/pesto-bennet-kamar"
+      ],
+      "videoUrl": "/api/recipe-video/pesto-bennet-kamar",
+      "time": "15 min",
+      "difficulty": "Tres facile",
+      "ingredients": [
+        "Fresh herbs",
+        "Olive oil",
+        "Nuts",
+        "Harissa Maison",
+        "Cheese or lemon to taste"
+      ],
+      "steps": [
+        "Blend the herbs, oil, nuts, and seasoning.",
+        "Add a small spoon of harissa for depth.",
+        "Serve with pasta, toast, or grilled vegetables."
+      ]
+    },
+    {
+      "id": "date-bites-hazelnut",
+      "slug": "date-bites-hazelnut",
+      "title": "Date Bites with Hazelnut Butter",
+      "titleAr": "كرات التمر بزبدة البندق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Noisette",
+      "productsUsed": [
+        {
+          "productId": "hazelnut-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "Small date bites made richer with smooth hazelnut butter.",
+      "image": "/api/recipe-image/date-bites-hazelnut",
+      "gallery": [
+        "/api/recipe-image/date-bites-hazelnut"
+      ],
+      "videoUrl": "/api/recipe-video/date-bites-hazelnut",
+      "time": "20 min",
+      "difficulty": "Tres facile",
+      "ingredients": [
+        "Dates",
+        "Beurre de Noisette",
+        "Crushed nuts",
+        "Optional cocoa"
+      ],
+      "steps": [
+        "Blend dates into a soft paste.",
+        "Mix with hazelnut butter.",
+        "Shape into bites and coat with crushed nuts."
+      ]
+    },
+    {
+      "id": "healthy-dessert-strawberry-jam",
+      "slug": "healthy-dessert-strawberry-jam",
+      "title": "Healthy Dessert with Strawberry Jam",
+      "titleAr": "تحلية صحية بمربى الفراولة",
+      "category": "sweet",
+      "relatedProduct": "Confiture de Fraise",
+      "productsUsed": [
+        {
+          "productId": "strawberry-jam",
+          "quantity": 1
+        }
+      ],
+      "overview": "A light layered dessert with a fruity strawberry jam finish.",
+      "image": "/api/recipe-image/healthy-dessert-strawberry-jam",
+      "gallery": [
+        "/api/recipe-image/healthy-dessert-strawberry-jam"
+      ],
+      "videoUrl": "/api/recipe-video/healthy-dessert-strawberry-jam",
+      "time": "15 min",
+      "difficulty": "Tres facile",
+      "ingredients": [
+        "Yogurt or cream",
+        "Confiture de Fraise",
+        "Granola",
+        "Fresh fruit"
+      ],
+      "steps": [
+        "Layer the cream base in a cup.",
+        "Add strawberry jam and crunchy topping.",
+        "Chill briefly before serving."
+      ]
+    },
+    {
+      "id": "cookies-cashew-butter",
+      "slug": "cookies-cashew-butter",
+      "title": "Cookies with Cashew Butter",
+      "titleAr": "كوكيز بزبدة الكاجو",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Cajou",
+      "productsUsed": [
+        {
+          "productId": "cashew-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "Soft cookies with a delicate cashew butter flavor.",
+      "image": "/api/recipe-image/cookies-cashew-butter",
+      "gallery": [
+        "/api/recipe-image/cookies-cashew-butter"
+      ],
+      "videoUrl": "/api/recipe-video/cookies-cashew-butter",
+      "time": "25 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Flour",
+        "Egg",
+        "Beurre de Cajou",
+        "Chocolate chips"
+      ],
+      "steps": [
+        "Prepare the cookie dough.",
+        "Fold in cashew butter and toppings.",
+        "Bake until the edges are golden."
+      ]
+    },
+    {
+      "id": "gelatto-hazelnut-pistachio",
+      "slug": "gelatto-hazelnut-pistachio",
+      "title": "Gelatto with Hazelnut and Pistachio Butter",
+      "titleAr": "جيلاتو بزبدة البندق والفستق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Noisette + Beurre de Pistache",
+      "productsUsed": [
+        {
+          "productId": "hazelnut-butter",
+          "quantity": 1
+        },
+        {
+          "productId": "pistachio-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "A frozen dessert idea that combines hazelnut comfort with pistachio richness.",
+      "image": "/api/recipe-image/gelatto-hazelnut-pistachio",
+      "gallery": [
+        "/api/recipe-image/gelatto-hazelnut-pistachio"
+      ],
+      "videoUrl": "/api/recipe-video/gelatto-hazelnut-pistachio",
+      "time": "20 min + freeze",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Milk",
+        "Cream",
+        "Beurre de Noisette",
+        "Beurre de Pistache"
+      ],
+      "steps": [
+        "Prepare the creamy base.",
+        "Swirl in both nut butters.",
+        "Freeze, then scoop and serve."
+      ]
+    },
+    {
+      "id": "jwajem-safxiya",
+      "slug": "jwajem-safxiya",
+      "title": "Jwajem Safxiya Bennet Kamar Edition",
+      "titleAr": "جواجم صفاقسية بنة قمر",
+      "category": "sweet",
+      "relatedProduct": "Zrir Noisette & Amandes",
+      "productsUsed": [
+        {
+          "productId": "zrir-hazelnut-almonds",
+          "quantity": 1
+        }
+      ],
+      "overview": "A Safi-style layered dessert with a Bennet Kamar zrir twist.",
+      "image": "/api/recipe-image/jwajem-safxiya",
+      "gallery": [
+        "/api/recipe-image/jwajem-safxiya"
+      ],
+      "videoUrl": "/api/recipe-video/jwajem-safxiya",
+      "time": "25 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Cream",
+        "Fruit",
+        "Nuts",
+        "Zrir Noisette & Amandes"
+      ],
+      "steps": [
+        "Layer the creamy base and fruit.",
+        "Add zrir for richness.",
+        "Finish with nuts and serve cold."
+      ],
+      "instagramUrl": "https://www.instagram.com/p/DS0RWSkjWJX/",
+      "facebookUrl": "https://www.facebook.com/reel/1231174702263054"
+    },
+    {
+      "id": "brownies-hazelnut-butter",
+      "slug": "brownies-hazelnut-butter",
+      "title": "Brownies with Hazelnut Butter",
+      "titleAr": "براونيز بزبدة البندق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Noisette",
+      "productsUsed": [
+        {
+          "productId": "hazelnut-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "Fudgy brownies with a hazelnut butter layer.",
+      "image": "/api/recipe-image/brownies-hazelnut-butter",
+      "gallery": [
+        "/api/recipe-image/brownies-hazelnut-butter"
+      ],
+      "videoUrl": "/api/recipe-video/brownies-hazelnut-butter",
+      "time": "35 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Chocolate",
+        "Eggs",
+        "Cocoa",
+        "Beurre de Noisette"
+      ],
+      "steps": [
+        "Prepare the brownie batter.",
+        "Swirl in hazelnut butter.",
+        "Bake until fudgy and let cool."
+      ]
+    },
+    {
+      "id": "lava-cake-hazelnut",
+      "slug": "lava-cake-hazelnut",
+      "title": "Lava Cake with Hazelnut Butter",
+      "titleAr": "لافا كيك بزبدة البندق",
+      "category": "sweet",
+      "relatedProduct": "Beurre de Noisette",
+      "productsUsed": [
+        {
+          "productId": "hazelnut-butter",
+          "quantity": 1
+        }
+      ],
+      "overview": "A warm lava cake with a flowing hazelnut butter center.",
+      "image": "/api/recipe-image/lava-cake-hazelnut",
+      "gallery": [
+        "/api/recipe-image/lava-cake-hazelnut"
+      ],
+      "videoUrl": "/api/recipe-video/lava-cake-hazelnut",
+      "time": "25 min",
+      "difficulty": "Facile",
+      "ingredients": [
+        "Chocolate cake batter",
+        "Beurre de Noisette",
+        "Eggs",
+        "Cocoa"
+      ],
+      "steps": [
+        "Fill the molds with batter.",
+        "Add hazelnut butter in the center.",
+        "Bake shortly and serve warm."
+      ]
+    }
+  ]
+}

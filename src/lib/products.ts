@@ -15,8 +15,15 @@ export type Product = {
   price: number;
   originalPrice?: number;
   weight?: string;
+  inventory?: number;
+  soldCount?: number;
   inStock: boolean;
   featured?: boolean;
+  hotThisWeek?: boolean;
+  customerFavorite?: boolean;
+  kind?: 'product' | 'bundle';
+  ratingAverage?: number;
+  ratingCount?: number;
 };
 
 export type Bundle = {
@@ -32,9 +39,36 @@ export type Bundle = {
   price: number;
   originalPrice: number;
   featured?: boolean;
+  hotThisWeek?: boolean;
+  customerFavorite?: boolean;
+};
+
+export type Recipe = {
+  id: string;
+  slug: string;
+  title: string;
+  titleAr?: string;
+  category: 'sweet' | 'salty';
+  relatedProduct: string;
+  productsUsed: Array<{
+    productId: string;
+    quantity: number;
+  }>;
+  overview: string;
+  image: string;
+  gallery?: string[];
+  videoUrl?: string;
+  instagramUrl?: string;
+  facebookUrl?: string;
+  time: string;
+  difficulty: string;
+  ingredients: string[];
+  steps: string[];
 };
 
 const catalog = '/images/catalog';
+const recipeImage = '/api/recipe-image';
+const recipeVideo = '/api/recipe-video';
 
 export const products: Product[] = [
   {
@@ -61,6 +95,8 @@ export const products: Product[] = [
     weight: '250g',
     inStock: true,
     featured: true,
+    hotThisWeek: true,
+    customerFavorite: true,
   },
   {
     id: 'pistachio-butter',
@@ -85,6 +121,7 @@ export const products: Product[] = [
     weight: '250g',
     inStock: true,
     featured: true,
+    customerFavorite: true,
   },
   {
     id: 'cashew-butter',
@@ -107,6 +144,7 @@ export const products: Product[] = [
     price: 30,
     weight: '250g',
     inStock: true,
+    customerFavorite: true,
   },
   {
     id: 'healthy-nutella',
@@ -126,6 +164,8 @@ export const products: Product[] = [
     weight: '250g',
     inStock: true,
     featured: true,
+    hotThisWeek: true,
+    customerFavorite: true,
   },
   {
     id: 'white-choco-spread',
@@ -148,6 +188,7 @@ export const products: Product[] = [
     price: 24,
     weight: '250g',
     inStock: true,
+    hotThisWeek: true,
   },
   {
     id: 'apricot-jam',
@@ -166,6 +207,7 @@ export const products: Product[] = [
     price: 18,
     weight: '300g',
     inStock: true,
+    customerFavorite: true,
   },
   {
     id: 'strawberry-jam',
@@ -207,6 +249,7 @@ export const products: Product[] = [
     weight: '300g',
     inStock: true,
     featured: true,
+    customerFavorite: true,
   },
   {
     id: 'zrir-pistachio',
@@ -225,6 +268,7 @@ export const products: Product[] = [
     price: 32,
     weight: '300g',
     inStock: true,
+    hotThisWeek: true,
   },
   {
     id: 'granola',
@@ -242,6 +286,7 @@ export const products: Product[] = [
     price: 20,
     weight: '350g',
     inStock: true,
+    customerFavorite: true,
   },
   {
     id: 'harissa',
@@ -261,6 +306,7 @@ export const products: Product[] = [
     weight: '200g',
     inStock: true,
     featured: true,
+    hotThisWeek: true,
   },
   {
     id: 'chicken-meatballs',
@@ -296,6 +342,8 @@ export const bundles: Bundle[] = [
     price: 95,
     originalPrice: 112,
     featured: true,
+    hotThisWeek: true,
+    customerFavorite: true,
   },
   {
     id: 'hazelnut-lovers',
@@ -308,6 +356,7 @@ export const bundles: Bundle[] = [
     image: `${catalog}/hazelnut-butter-3.jpg`,
     price: 68,
     originalPrice: 75,
+    customerFavorite: true,
   },
   {
     id: 'pistachio-moments',
@@ -320,6 +369,7 @@ export const bundles: Bundle[] = [
     image: `${catalog}/pistachio-butter-3.jpg`,
     price: 84,
     originalPrice: 91,
+    hotThisWeek: true,
   },
   {
     id: 'breakfast-table',
@@ -332,6 +382,7 @@ export const bundles: Bundle[] = [
     image: `${catalog}/apricot-jam-2.jpg`,
     price: 72,
     originalPrice: 81,
+    customerFavorite: true,
   },
   {
     id: 'savory-duo',
@@ -344,6 +395,267 @@ export const bundles: Bundle[] = [
     image: `${catalog}/harissa-3.jpg`,
     price: 36,
     originalPrice: 40,
+  },
+];
+
+export const recipes: Recipe[] = [
+  {
+    id: 'japanese-cake-bennet-kamar',
+    slug: 'japanese-cake-bennet-kamar',
+    title: 'Japanese Cake Bennet Kamar Edition',
+    titleAr: 'كيك ياباني بنة قمر',
+    category: 'sweet',
+    relatedProduct: 'Nutella Naturel',
+    productsUsed: [{ productId: 'healthy-nutella', quantity: 1 }],
+    overview: 'A soft cloud cake finished with a generous Bennet Kamar chocolate hazelnut layer.',
+    image: `${recipeImage}/japanese-cake-bennet-kamar`,
+    gallery: [`${recipeImage}/japanese-cake-bennet-kamar`, `${recipeImage}/japanese-cake-bennet-kamar-2`],
+    videoUrl: `${recipeVideo}/japanese-cake-bennet-kamar`,
+    time: '45 min',
+    difficulty: 'Facile',
+    ingredients: ['Eggs', 'Milk', 'Flour', 'Nutella Naturel', 'A light cream topping'],
+    steps: ['Prepare a light sponge batter.', 'Bake until the cake is soft and airy.', 'Let it cool, then finish with Nutella Naturel.'],
+  },
+  {
+    id: 'mini-pancakes-pistachio',
+    slug: 'mini-pancakes-pistachio',
+    title: 'Mini Pancakes with Pistachio Butter',
+    titleAr: 'ميني بانكيك بزبدة الفستق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Pistache',
+    productsUsed: [{ productId: 'pistachio-butter', quantity: 1 }],
+    overview: 'Quick mini pancakes with a creamy pistachio finish for breakfast or coffee time.',
+    image: '/images/recipes/pancakes.jpg',
+    gallery: ['/images/recipes/pancakes.jpg'],
+    videoUrl: `${recipeVideo}/mini-pancakes-pistachio`,
+    time: '20 min',
+    difficulty: 'Tres facile',
+    ingredients: ['Mini pancakes', 'Beurre de Pistache', 'Fresh fruit', 'Crushed nuts'],
+    steps: ['Cook small pancakes until golden.', 'Warm the pistachio butter slightly.', 'Top the pancakes and serve immediately.'],
+  },
+  {
+    id: 'pistachio-iced-coffee',
+    slug: 'pistachio-iced-coffee',
+    title: 'Pistachio Iced Coffee',
+    titleAr: 'قهوة مثلجة بزبدة الفستق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Pistache',
+    productsUsed: [{ productId: 'pistachio-butter', quantity: 1 }],
+    overview: 'A cold coffee idea made richer with pistachio butter and a smooth milk base.',
+    image: '/images/recipes/iced-coffee.jpg',
+    gallery: ['/images/recipes/iced-coffee.jpg', `${recipeImage}/pistachio-iced-coffee-2`],
+    videoUrl: `${recipeVideo}/pistachio-iced-coffee`,
+    time: '10 min',
+    difficulty: 'Tres facile',
+    ingredients: ['Espresso', 'Cold milk', 'Beurre de Pistache', 'Ice cubes'],
+    steps: ['Mix pistachio butter with coffee until smooth.', 'Add cold milk and ice.', 'Shake or stir, then serve chilled.'],
+  },
+  {
+    id: 'mini-donuts-hazelnut',
+    slug: 'mini-donuts-hazelnut',
+    title: 'Mini Donuts with Hazelnut Butter Filling',
+    titleAr: 'ميني دونات بزبدة البندق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Noisette',
+    productsUsed: [{ productId: 'hazelnut-butter', quantity: 1 }],
+    overview: 'Small homemade donuts filled with smooth hazelnut butter.',
+    image: '/images/recipes/donuts.jpg',
+    gallery: ['/images/recipes/donuts.jpg'],
+    videoUrl: `${recipeVideo}/mini-donuts-hazelnut`,
+    time: '30 min',
+    difficulty: 'Facile',
+    ingredients: ['Mini donuts', 'Beurre de Noisette', 'Powdered sugar', 'Optional crushed hazelnuts'],
+    steps: ['Prepare or warm the mini donuts.', 'Fill each piece with hazelnut butter.', 'Dust lightly and serve.'],
+  },
+  {
+    id: 'no-flour-natural-nutella-cake',
+    slug: 'no-flour-natural-nutella-cake',
+    title: 'No-Flour Cake with Natural Nutella',
+    titleAr: 'كيك بدون فرينة بالنوتيلا الطبيعية',
+    category: 'sweet',
+    relatedProduct: 'Nutella Naturel',
+    productsUsed: [{ productId: 'healthy-nutella', quantity: 1 }],
+    overview: 'A rich cake idea where Bennet Kamar Natural Nutella carries the chocolate flavor.',
+    image: `${recipeImage}/no-flour-natural-nutella-cake`,
+    gallery: [`${recipeImage}/no-flour-natural-nutella-cake`],
+    videoUrl: `${recipeVideo}/no-flour-natural-nutella-cake`,
+    time: '35 min',
+    difficulty: 'Facile',
+    ingredients: ['Eggs', 'Nutella Naturel', 'Cocoa', 'A pinch of salt'],
+    steps: ['Whisk the base until smooth.', 'Bake gently until set.', 'Cool before slicing for a clean texture.'],
+  },
+  {
+    id: 'crepes-strawberry-jam',
+    slug: 'crepes-strawberry-jam',
+    title: 'Crepes with Strawberry Jam',
+    titleAr: 'كريب بمربى الفراولة',
+    category: 'sweet',
+    relatedProduct: 'Confiture de Fraise',
+    productsUsed: [{ productId: 'strawberry-jam', quantity: 1 }],
+    overview: 'Simple crepes folded with homemade strawberry jam and a soft fruit finish.',
+    image: `${recipeImage}/crepes-strawberry-jam`,
+    gallery: [`${recipeImage}/crepes-strawberry-jam`],
+    videoUrl: `${recipeVideo}/crepes-strawberry-jam`,
+    time: '25 min',
+    difficulty: 'Facile',
+    ingredients: ['Crepes', 'Confiture de Fraise', 'Fresh strawberries', 'Optional cream'],
+    steps: ['Prepare thin crepes.', 'Spread strawberry jam while the crepes are warm.', 'Fold and garnish before serving.'],
+  },
+  {
+    id: 'panna-cotta-apricot',
+    slug: 'panna-cotta-apricot',
+    title: 'Panna Cotta with Apricot Jam',
+    titleAr: 'بانا كوتا بمربى المشمش',
+    category: 'sweet',
+    relatedProduct: "Confiture d'Abricot",
+    productsUsed: [{ productId: 'apricot-jam', quantity: 1 }],
+    overview: 'A fresh dessert pairing creamy panna cotta with bright apricot jam.',
+    image: `${recipeImage}/panna-cotta-apricot`,
+    gallery: [`${recipeImage}/panna-cotta-apricot`],
+    videoUrl: `${recipeVideo}/panna-cotta-apricot`,
+    time: '20 min + chill',
+    difficulty: 'Facile',
+    ingredients: ['Cream', 'Milk', 'Vanilla', "Confiture d'Abricot"],
+    steps: ['Prepare the panna cotta base.', 'Chill until set.', 'Top with apricot jam before serving.'],
+  },
+  {
+    id: 'pesto-bennet-kamar',
+    slug: 'pesto-bennet-kamar',
+    title: 'Pesto Bennet Kamar Edition',
+    titleAr: 'بيستو بنة قمر',
+    category: 'salty',
+    relatedProduct: 'Harissa Maison',
+    productsUsed: [{ productId: 'harissa', quantity: 1 }],
+    overview: 'A savory recipe idea that brings Bennet Kamar flavor into pasta, toast, or sandwiches.',
+    image: `${recipeImage}/pesto-bennet-kamar`,
+    gallery: [`${recipeImage}/pesto-bennet-kamar`],
+    videoUrl: `${recipeVideo}/pesto-bennet-kamar`,
+    time: '15 min',
+    difficulty: 'Tres facile',
+    ingredients: ['Fresh herbs', 'Olive oil', 'Nuts', 'Harissa Maison', 'Cheese or lemon to taste'],
+    steps: ['Blend the herbs, oil, nuts, and seasoning.', 'Add a small spoon of harissa for depth.', 'Serve with pasta, toast, or grilled vegetables.'],
+  },
+  {
+    id: 'date-bites-hazelnut',
+    slug: 'date-bites-hazelnut',
+    title: 'Date Bites with Hazelnut Butter',
+    titleAr: 'كرات التمر بزبدة البندق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Noisette',
+    productsUsed: [{ productId: 'hazelnut-butter', quantity: 1 }],
+    overview: 'Small date bites made richer with smooth hazelnut butter.',
+    image: `${recipeImage}/date-bites-hazelnut`,
+    gallery: [`${recipeImage}/date-bites-hazelnut`],
+    videoUrl: `${recipeVideo}/date-bites-hazelnut`,
+    time: '20 min',
+    difficulty: 'Tres facile',
+    ingredients: ['Dates', 'Beurre de Noisette', 'Crushed nuts', 'Optional cocoa'],
+    steps: ['Blend dates into a soft paste.', 'Mix with hazelnut butter.', 'Shape into bites and coat with crushed nuts.'],
+  },
+  {
+    id: 'healthy-dessert-strawberry-jam',
+    slug: 'healthy-dessert-strawberry-jam',
+    title: 'Healthy Dessert with Strawberry Jam',
+    titleAr: 'تحلية صحية بمربى الفراولة',
+    category: 'sweet',
+    relatedProduct: 'Confiture de Fraise',
+    productsUsed: [{ productId: 'strawberry-jam', quantity: 1 }],
+    overview: 'A light layered dessert with a fruity strawberry jam finish.',
+    image: `${recipeImage}/healthy-dessert-strawberry-jam`,
+    gallery: [`${recipeImage}/healthy-dessert-strawberry-jam`],
+    videoUrl: `${recipeVideo}/healthy-dessert-strawberry-jam`,
+    time: '15 min',
+    difficulty: 'Tres facile',
+    ingredients: ['Yogurt or cream', 'Confiture de Fraise', 'Granola', 'Fresh fruit'],
+    steps: ['Layer the cream base in a cup.', 'Add strawberry jam and crunchy topping.', 'Chill briefly before serving.'],
+  },
+  {
+    id: 'cookies-cashew-butter',
+    slug: 'cookies-cashew-butter',
+    title: 'Cookies with Cashew Butter',
+    titleAr: 'كوكيز بزبدة الكاجو',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Cajou',
+    productsUsed: [{ productId: 'cashew-butter', quantity: 1 }],
+    overview: 'Soft cookies with a delicate cashew butter flavor.',
+    image: `${recipeImage}/cookies-cashew-butter`,
+    gallery: [`${recipeImage}/cookies-cashew-butter`],
+    videoUrl: `${recipeVideo}/cookies-cashew-butter`,
+    time: '25 min',
+    difficulty: 'Facile',
+    ingredients: ['Flour', 'Egg', 'Beurre de Cajou', 'Chocolate chips'],
+    steps: ['Prepare the cookie dough.', 'Fold in cashew butter and toppings.', 'Bake until the edges are golden.'],
+  },
+  {
+    id: 'gelatto-hazelnut-pistachio',
+    slug: 'gelatto-hazelnut-pistachio',
+    title: 'Gelatto with Hazelnut and Pistachio Butter',
+    titleAr: 'جيلاتو بزبدة البندق والفستق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Noisette + Beurre de Pistache',
+    productsUsed: [
+      { productId: 'hazelnut-butter', quantity: 1 },
+      { productId: 'pistachio-butter', quantity: 1 },
+    ],
+    overview: 'A frozen dessert idea that combines hazelnut comfort with pistachio richness.',
+    image: `${recipeImage}/gelatto-hazelnut-pistachio`,
+    gallery: [`${recipeImage}/gelatto-hazelnut-pistachio`],
+    videoUrl: `${recipeVideo}/gelatto-hazelnut-pistachio`,
+    time: '20 min + freeze',
+    difficulty: 'Facile',
+    ingredients: ['Milk', 'Cream', 'Beurre de Noisette', 'Beurre de Pistache'],
+    steps: ['Prepare the creamy base.', 'Swirl in both nut butters.', 'Freeze, then scoop and serve.'],
+  },
+  {
+    id: 'jwajem-safxiya',
+    slug: 'jwajem-safxiya',
+    title: 'Jwajem Safxiya Bennet Kamar Edition',
+    titleAr: 'جواجم صفاقسية بنة قمر',
+    category: 'sweet',
+    relatedProduct: 'Zrir Noisette & Amandes',
+    productsUsed: [{ productId: 'zrir-hazelnut-almonds', quantity: 1 }],
+    overview: 'A Safi-style layered dessert with a Bennet Kamar zrir twist.',
+    image: `${recipeImage}/jwajem-safxiya`,
+    gallery: [`${recipeImage}/jwajem-safxiya`],
+    videoUrl: `${recipeVideo}/jwajem-safxiya`,
+    time: '25 min',
+    difficulty: 'Facile',
+    ingredients: ['Cream', 'Fruit', 'Nuts', 'Zrir Noisette & Amandes'],
+    steps: ['Layer the creamy base and fruit.', 'Add zrir for richness.', 'Finish with nuts and serve cold.'],
+  },
+  {
+    id: 'brownies-hazelnut-butter',
+    slug: 'brownies-hazelnut-butter',
+    title: 'Brownies with Hazelnut Butter',
+    titleAr: 'براونيز بزبدة البندق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Noisette',
+    productsUsed: [{ productId: 'hazelnut-butter', quantity: 1 }],
+    overview: 'Fudgy brownies with a hazelnut butter layer.',
+    image: `${recipeImage}/brownies-hazelnut-butter`,
+    gallery: [`${recipeImage}/brownies-hazelnut-butter`],
+    videoUrl: `${recipeVideo}/brownies-hazelnut-butter`,
+    time: '35 min',
+    difficulty: 'Facile',
+    ingredients: ['Chocolate', 'Eggs', 'Cocoa', 'Beurre de Noisette'],
+    steps: ['Prepare the brownie batter.', 'Swirl in hazelnut butter.', 'Bake until fudgy and let cool.'],
+  },
+  {
+    id: 'lava-cake-hazelnut',
+    slug: 'lava-cake-hazelnut',
+    title: 'Lava Cake with Hazelnut Butter',
+    titleAr: 'لافا كيك بزبدة البندق',
+    category: 'sweet',
+    relatedProduct: 'Beurre de Noisette',
+    productsUsed: [{ productId: 'hazelnut-butter', quantity: 1 }],
+    overview: 'A warm lava cake with a flowing hazelnut butter center.',
+    image: `${recipeImage}/lava-cake-hazelnut`,
+    gallery: [`${recipeImage}/lava-cake-hazelnut`],
+    videoUrl: `${recipeVideo}/lava-cake-hazelnut`,
+    time: '25 min',
+    difficulty: 'Facile',
+    ingredients: ['Chocolate cake batter', 'Beurre de Noisette', 'Eggs', 'Cocoa'],
+    steps: ['Fill the molds with batter.', 'Add hazelnut butter in the center.', 'Bake shortly and serve warm.'],
   },
 ];
 
@@ -374,6 +686,9 @@ export function bundleToProduct(bundle: Bundle): Product {
     weight: 'Bundle',
     inStock: true,
     featured: bundle.featured,
+    hotThisWeek: bundle.hotThisWeek,
+    customerFavorite: bundle.customerFavorite,
+    kind: 'bundle',
   };
 }
 

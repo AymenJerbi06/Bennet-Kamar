@@ -2,9 +2,11 @@
 
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { useLanguage } from './LanguageProvider';
 
 export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { copy } = useLanguage();
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.playbackRate = 0.82;
@@ -35,7 +37,7 @@ export default function HeroSection() {
           </div>
           <div className="hero-arabic">بنة قمر</div>
           <div className="hero-since">
-            Homemade by{' '}
+            {copy.hero.homemadeBy}{' '}
             <a
               href="https://www.instagram.com/feriel_loukil/"
               target="_blank"

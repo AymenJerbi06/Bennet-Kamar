@@ -4,10 +4,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ClipboardList, Minus, Plus, ShoppingBag, X } from 'lucide-react';
 import { formatPrice } from '@/lib/products';
+import { useLanguage } from './LanguageProvider';
 import { useStore } from './StoreProvider';
 
 export default function CartDrawer() {
   const router = useRouter();
+  const { copy } = useLanguage();
   const {
     cart,
     cartCount,
@@ -34,10 +36,10 @@ export default function CartDrawer() {
         <div className="cart-header">
           <div className="cart-title">
             <ShoppingBag size={28} />
-            Cart
+            {copy.cart.title}
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </div>
-          <button onClick={closeCart} aria-label="Close cart" style={{ color: 'var(--white)' }}>
+          <button onClick={closeCart} aria-label={copy.cart.close} style={{ color: 'var(--white)' }}>
             <X size={28} />
           </button>
         </div>
@@ -47,10 +49,10 @@ export default function CartDrawer() {
             <div style={{ textAlign: 'center', padding: '70px 18px' }}>
               <ShoppingBag size={58} style={{ margin: '0 auto 20px' }} />
               <p className="font-display" style={{ fontSize: 34, margin: '0 0 10px' }}>
-                Your cart is empty
+                {copy.cart.emptyTitle}
               </p>
               <p style={{ margin: 0, color: 'var(--muted)', lineHeight: 1.5 }}>
-                Add your favorite handmade jars from the Products section.
+                {copy.cart.emptyBody}
               </p>
             </div>
           ) : (
@@ -66,18 +68,18 @@ export default function CartDrawer() {
 
                   <div className="cart-row">
                     <div className="qty-control">
-                      <button onClick={() => updateQuantity(product.id, quantity - 1)} aria-label="Decrease quantity">
+                      <button onClick={() => updateQuantity(product.id, quantity - 1)} aria-label={copy.cart.decrease}>
                         <Minus size={16} />
                       </button>
                       <strong>{quantity}</strong>
-                      <button onClick={() => updateQuantity(product.id, quantity + 1)} aria-label="Increase quantity">
+                      <button onClick={() => updateQuantity(product.id, quantity + 1)} aria-label={copy.cart.increase}>
                         <Plus size={16} />
                       </button>
                     </div>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                       <strong>{formatPrice(product.price * quantity)}</strong>
-                      <button onClick={() => removeFromCart(product.id)} aria-label={`Remove ${product.nameFr}`}>
+                      <button onClick={() => removeFromCart(product.id)} aria-label={`${copy.cart.remove} ${product.nameFr}`}>
                         <X size={18} />
                       </button>
                     </div>
@@ -91,12 +93,12 @@ export default function CartDrawer() {
         {cart.length > 0 && (
           <div className="cart-footer">
             <div className="cart-total">
-              <span>Total</span>
+              <span>{copy.cart.total}</span>
               <span>{formatPrice(cartTotal)}</span>
             </div>
             <button onClick={goToCheckout} className="black-btn" style={{ width: '100%' }}>
               <ClipboardList size={20} />
-              Checkout Details
+              {copy.cart.checkout}
             </button>
           </div>
         )}

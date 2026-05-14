@@ -1,13 +1,17 @@
+'use client';
+
+import { useLanguage } from './LanguageProvider';
+
 export default function TestimonialsSection() {
+  const { copy } = useLanguage();
+
   return (
     <section className="testimonial-section">
-      <div className="stars" aria-label="Five star review">★★★★★</div>
+      <div className="stars" aria-label={copy.testimonial.aria}>★★★★★</div>
       <blockquote className="testimonial-quote">
-        “Every jar tastes like something made at home for people you love. The
-        pistachio butter, zrir, and harissa have become the first things my
-        family asks for whenever we gather.”
+        “{copy.testimonial.quote}”
       </blockquote>
-      <p className="testimonial-author">- Sana B., Tunis</p>
+      <p className="testimonial-author">{copy.testimonial.author}</p>
     </section>
   );
 }

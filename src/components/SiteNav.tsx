@@ -3,27 +3,32 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Facebook, Instagram, Menu, ShoppingBag, X } from 'lucide-react';
+import { Facebook, Globe2, Instagram, Menu, ShoppingBag, X } from 'lucide-react';
+import type { Language } from '@/lib/i18n';
+import { useLanguage } from './LanguageProvider';
 import { useStore } from './StoreProvider';
 
 const BRAND_INSTAGRAM = 'https://www.instagram.com/bennet_kamar/';
 const BRAND_FACEBOOK = 'https://www.facebook.com/profile.php?id=100089209781312';
 const DESIGNER_URL = 'https://aymen.info';
 
-const links = [
-  { label: 'Home', href: '/#home' },
-  { label: 'Products', href: '/#products' },
-  { label: 'Gift Gallery', href: '/#products' },
-  { label: 'Our Story', href: '/#story' },
-  { label: 'Contact', href: '/#contact' },
-];
-
 export default function SiteNav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [languageOpen, setLanguageOpen] = useState(false);
+  const { language, setLanguage, copy, labels } = useLanguage();
   const { cartCount, openCart } = useStore();
-  const solidNav = pathname === '/checkout';
+  const solidNav = pathname === '/checkout' || pathname === '/admin';
+  const links = [
+    { label: copy.nav.home, href: '/#home' },
+    { label: copy.nav.products, href: '/#products' },
+    { label: copy.nav.recipes, href: '/#recipes' },
+    { label: copy.nav.howItWorks, href: '/#how-it-works' },
+    { label: copy.nav.insideBox, href: '/#inside-the-box' },
+    { label: copy.nav.story, href: '/#story' },
+    { label: copy.nav.contact, href: '/#contact' },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 70);
@@ -37,6 +42,11 @@ export default function SiteNav() {
     setMobileOpen(false);
   };
 
+  const chooseLanguage = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+    setLanguageOpen(false);
+  };
+
   return (
     <>
       <nav className={`valley-nav ${scrolled || solidNav ? 'is-scrolled' : ''}`}>
@@ -46,7 +56,7 @@ export default function SiteNav() {
           rel="noopener noreferrer"
           className="nav-credit"
         >
-          Created and designed by <span>Aymen</span>
+          {copy.nav.designer} <span>Aymen</span>
         </a>
 
         <div className="container valley-nav-inner">
@@ -67,6 +77,34 @@ export default function SiteNav() {
           </div>
 
           <div className="valley-actions">
+            <div className="language-switcher">
+              <button
+                type="button"
+                className="language-trigger"
+                onClick={() => setLanguageOpen(open => !open)}
+                aria-label={copy.nav.language}
+                aria-expanded={languageOpen}
+              >
+                <Globe2 size={19} />
+                <span>{labels[language]}</span>
+              </button>
+              {languageOpen && (
+                <div className="language-menu" role="menu">
+                  {(Object.entries(labels) as Array<[Language, string]>).map(([value, label]) => (
+                    <button
+                      key={value}
+                      type="button"
+                      className={value === language ? 'active' : ''}
+                      onClick={() => chooseLanguage(value)}
+                      role="menuitem"
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <a
               href={BRAND_INSTAGRAM}
               target="_blank"
@@ -87,7 +125,7 @@ export default function SiteNav() {
               <Facebook size={30} strokeWidth={2.3} />
             </a>
 
-            <button onClick={openCart} className="nav-icon" aria-label="Open cart">
+            <button onClick={openCart} className="nav-icon" aria-label={copy.nav.openCart}>
               <ShoppingBag size={30} strokeWidth={2.3} />
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
             </button>
@@ -115,7 +153,7 @@ export default function SiteNav() {
             <button
               onClick={() => setMobileOpen(true)}
               className="mobile-burger"
-              aria-label="Open menu"
+              aria-label={copy.nav.openMenu}
             >
               <Menu size={32} />
             </button>
@@ -132,7 +170,7 @@ export default function SiteNav() {
           <span className="valley-brand" style={{ color: 'var(--ink)', textShadow: 'none' }}>
             Bennet Kamar
           </span>
-          <button onClick={() => setMobileOpen(false)} aria-label="Close menu">
+          <button onClick={() => setMobileOpen(false)} aria-label={copy.nav.closeMenu}>
             <X size={28} />
           </button>
         </div>
@@ -151,9 +189,25 @@ export default function SiteNav() {
           ))}
         </div>
 
+        <div className="mobile-language-switcher">
+          <span>{copy.nav.language}</span>
+          <div className="mobile-language-options" aria-label={copy.nav.language}>
+            {(Object.entries(labels) as Array<[Language, string]>).map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                className={value === language ? 'active' : ''}
+                onClick={() => chooseLanguage(value)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
         <button onClick={openCartAndCloseMenu} className="black-btn" style={{ marginTop: 'auto' }}>
           <ShoppingBag size={20} />
-          Cart ({cartCount})
+          {copy.nav.cart} ({cartCount})
         </button>
       </aside>
     </>
